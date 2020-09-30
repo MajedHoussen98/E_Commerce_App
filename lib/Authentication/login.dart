@@ -4,6 +4,7 @@ import 'package:e_shop/Widgets/customTextField.dart';
 import 'package:e_shop/DialogBox/errorDialog.dart';
 import 'package:e_shop/DialogBox/loadingDialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Store/storehome.dart';
 import 'package:e_shop/Config/config.dart';
@@ -60,8 +61,8 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            RaisedButton(
-              onPressed: () {
+            InkWell(
+              onTap: () {
                 _emailController.text.isNotEmpty &&
                         _passwordController.text.isNotEmpty
                     ? loginUser()
@@ -74,10 +75,28 @@ class _LoginState extends State<Login> {
                           );
                         });
               },
-              color: Colors.blue[700],
-              child: Text(
-                "Login",
-                style: TextStyle(color: Colors.white),
+              child: Container(
+                margin: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Colors.blue[700], Colors.white],
+                      begin: const FractionalOffset(0, 0),
+                      end: const FractionalOffset(1, 1),
+                      stops: [1, 0],
+                      tileMode: TileMode.clamp,
+                    )),
+                height: 50,
+                child: Center(
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        letterSpacing: 1),
+                  ),
+                ),
               ),
             ),
             SizedBox(

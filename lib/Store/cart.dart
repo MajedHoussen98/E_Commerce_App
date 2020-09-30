@@ -46,9 +46,9 @@ class _CartPageState extends State<CartPage> {
             Navigator.pushReplacement(context, route);
           }
         },
+        icon: Icon(Icons.navigate_next),
         label: Text("Check Out"),
         backgroundColor: Colors.blue[700],
-        icon: Icon(Icons.navigate_next),
       ),
       appBar: MyAppBar(),
       drawer: MyDrawer(),
@@ -62,12 +62,24 @@ class _CartPageState extends State<CartPage> {
                 child: Center(
                   child: cartProvider.count == 0
                       ? Container()
-                      : Text(
-                          "Total Price:  ${amountProvider.totalAmount.toString()}",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
+                      : Container(
+                          margin: EdgeInsets.only(top: 15),
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.blue[50],
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(color: Colors.blue)
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Total Price: ₪${amountProvider.totalAmount.toString()}",
+                              style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
                 ),
               );

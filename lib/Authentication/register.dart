@@ -89,14 +89,40 @@ class _RegisterState extends State<Register> {
                 ],
               ),
             ),
-            RaisedButton(
-              onPressed: () => _uploadAndSaveImage(),
-              color: Colors.blue[700],
-              child: Text(
-                "Sign up",
-                style: TextStyle(color: Colors.white),
+            InkWell(
+              onTap: () => _uploadAndSaveImage(),
+              child: Container(
+                margin: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Colors.blue[700], Colors.white],
+                      begin: const FractionalOffset(0, 0),
+                      end: const FractionalOffset(1, 1),
+                      stops: [1, 0],
+                      tileMode: TileMode.clamp,
+                    )),
+                height: 50,
+                child: Center(
+                  child: Text(
+                    "Sign up",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        letterSpacing: 1),
+                  ),
+                ),
               ),
             ),
+            // RaisedButton(
+            //   onPressed: () => _uploadAndSaveImage(),
+            //   color: Colors.blue[700],
+            //   child: Text(
+            //     "Sign up",
+            //     style: TextStyle(color: Colors.white),
+            //   ),
+            // ),
             SizedBox(
               height: 30,
             ),

@@ -96,8 +96,8 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
                 ],
               ),
             ),
-            RaisedButton(
-              onPressed: () {
+            InkWell(
+              onTap: () {
                 _adminIDController.text.isNotEmpty &&
                         _passwordController.text.isNotEmpty
                     ? loginAdmin()
@@ -109,10 +109,28 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
                           );
                         });
               },
-              color: Colors.blue[700],
-              child: Text(
-                "Login",
-                style: TextStyle(color: Colors.white),
+              child: Container(
+                margin: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Colors.blue[700], Colors.white],
+                      begin: const FractionalOffset(0, 0),
+                      end: const FractionalOffset(1, 1),
+                      stops: [1, 0],
+                      tileMode: TileMode.clamp,
+                    )),
+                height: 50,
+                child: Center(
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        letterSpacing: 1),
+                  ),
+                ),
               ),
             ),
             SizedBox(
