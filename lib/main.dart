@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/Counters/BookQuantity.dart';
+import 'package:e_shop/Counters/ItemQuantity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,13 +23,22 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'e-Shop',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Colors.green,
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (c) => CartItemCounter(),),
+          ChangeNotifierProvider(create: (c) => CartItemCounter(),),
+          ChangeNotifierProvider(create: (c) => AddressChanger(),),
+          ChangeNotifierProvider(create: (c) => TotalAmount(),),
+        ],
+        child: MaterialApp(
+            title: 'e-Shop',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primaryColor: Colors.green,
+            ),
+            home: SplashScreen()
         ),
-        home: SplashScreen());
+    );
   }
 }
 
@@ -63,12 +72,12 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-          colors: [Colors.pink, Colors.lightGreenAccent],
-          begin: const FractionalOffset(0, 0),
-          end: const FractionalOffset(1, 1),
-          stops: [0, 1],
-          tileMode: TileMode.clamp,
-        )),
+              colors: [Colors.pink, Colors.lightGreenAccent],
+              begin: const FractionalOffset(0, 0),
+              end: const FractionalOffset(1, 1),
+              stops: [0, 1],
+              tileMode: TileMode.clamp,
+            )),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

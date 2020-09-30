@@ -61,12 +61,14 @@ class _RegisterState extends State<Register> {
               child: Column(
                 children: [
                   CustomTextField(
+                    textInputType: TextInputType.name,
                     controller: _nameController,
                     hintText: "Enter your name",
                     iconData: Icons.person,
                     isObscure: false,
                   ),
                   CustomTextField(
+                    textInputType: TextInputType.emailAddress,
                     controller: _emailController,
                     hintText: "Enter your email",
                     iconData: Icons.email,

@@ -49,6 +49,7 @@ class _LoginState extends State<Login> {
                     hintText: "Email",
                     iconData: Icons.email,
                     isObscure: false,
+                    textInputType: TextInputType.emailAddress,
                   ),
                   CustomTextField(
                     controller: _passwordController,
@@ -68,6 +69,7 @@ class _LoginState extends State<Login> {
                         context: context,
                         builder: (c) {
                           return ErrorAlertDialog(
+                            color: Colors.red,
                             message: "Please write email and password",
                           );
                         });
@@ -136,7 +138,7 @@ class _LoginState extends State<Login> {
     });
 
     if (firebaseUser != null) {
-      readData(firebaseUser).then((s){
+      readData(firebaseUser).then((s) {
         Navigator.pop(context);
         Route route = MaterialPageRoute(builder: (c) => StoreHome());
         Navigator.pushReplacement(context, route);

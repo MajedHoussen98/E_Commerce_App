@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class ErrorAlertDialog extends StatelessWidget {
   final String message;
-
-  const ErrorAlertDialog({Key key, this.message}) : super(key: key);
+  final Color color;
+  const ErrorAlertDialog({Key key, this.message, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ErrorAlertDialog extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            color: Colors.red,
+            color: color,
             child: Center(
               child: Text("OK", style: TextStyle(fontWeight: FontWeight.bold),),
             ),
