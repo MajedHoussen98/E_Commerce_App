@@ -131,7 +131,6 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8),
       child: Container(
-        margin: EdgeInsets.only(right: 20),
         padding: EdgeInsets.all(15),
         width: MediaQuery.of(context).size.width * 1,
         height: 50,
