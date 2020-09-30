@@ -74,7 +74,7 @@ class _LoginState extends State<Login> {
                           );
                         });
               },
-              color: Colors.pink,
+              color: Colors.blue[700],
               child: Text(
                 "Login",
                 style: TextStyle(color: Colors.white),
@@ -82,11 +82,6 @@ class _LoginState extends State<Login> {
             ),
             SizedBox(
               height: 50,
-            ),
-            Container(
-              height: 4,
-              width: _screenWidth * 0.8,
-              color: Colors.pink,
             ),
             SizedBox(
               height: 15,
@@ -96,11 +91,11 @@ class _LoginState extends State<Login> {
                   MaterialPageRoute(builder: (context) => AdminSignInPage())),
               icon: Icon(
                 Icons.nature,
-                color: Colors.pink,
+                color: Colors.blue[700],
               ),
               label: Text("I'm Admin",
                   style: TextStyle(
-                      color: Colors.pink, fontWeight: FontWeight.bold)),
+                      color: Colors.blue[700], fontWeight: FontWeight.bold)),
             ),
           ],
         ),

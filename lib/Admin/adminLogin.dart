@@ -10,10 +10,11 @@ class AdminSignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            colors: [Colors.pink, Colors.lightGreenAccent],
+            colors: [Colors.blue[700], Colors.white],
             begin: const FractionalOffset(0, 0),
             end: const FractionalOffset(1, 1),
             stops: [0, 1],
@@ -50,7 +51,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(
-          colors: [Colors.pink, Colors.lightGreenAccent],
+          colors: [Colors.blue[700], Colors.white],
           begin: const FractionalOffset(0, 0),
           end: const FractionalOffset(1, 0),
           stops: [0, 1],
@@ -108,7 +109,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
                           );
                         });
               },
-              color: Colors.pink,
+              color: Colors.blue[700],
               child: Text(
                 "Login",
                 style: TextStyle(color: Colors.white),
@@ -116,11 +117,6 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
             ),
             SizedBox(
               height: 50,
-            ),
-            Container(
-              height: 4,
-              width: _screenWidth * 0.8,
-              color: Colors.pink,
             ),
             SizedBox(
               height: 20,
@@ -130,11 +126,11 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
                   MaterialPageRoute(builder: (context) => AuthenticScreen())),
               icon: Icon(
                 Icons.nature,
-                color: Colors.pink,
+                color: Colors.blue[700],
               ),
               label: Text("I'm not Admin",
                   style: TextStyle(
-                      color: Colors.pink, fontWeight: FontWeight.bold)),
+                      color: Colors.blue[700], fontWeight: FontWeight.bold)),
             ),
             SizedBox(
               height: 50,

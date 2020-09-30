@@ -24,20 +24,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (c) => CartItemCounter(),),
-          ChangeNotifierProvider(create: (c) => CartItemCounter(),),
-          ChangeNotifierProvider(create: (c) => AddressChanger(),),
-          ChangeNotifierProvider(create: (c) => TotalAmount(),),
-        ],
-        child: MaterialApp(
-            title: 'e-Shop',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primaryColor: Colors.green,
-            ),
-            home: SplashScreen()
+      providers: [
+        ChangeNotifierProvider(
+          create: (c) => CartItemCounter(),
         ),
+        ChangeNotifierProvider(
+          create: (c) => ItemQuantity(),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => AddressChanger(),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => TotalAmount(),
+        ),
+      ],
+      child: MaterialApp(
+          title: 'e-Shop',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Colors.blue[700],
+          ),
+          home: SplashScreen()),
     );
   }
 }
@@ -72,12 +79,12 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.pink, Colors.lightGreenAccent],
-              begin: const FractionalOffset(0, 0),
-              end: const FractionalOffset(1, 1),
-              stops: [0, 1],
-              tileMode: TileMode.clamp,
-            )),
+          colors: [Colors.blue[700], Colors.white],
+          begin: const FractionalOffset(0, 0),
+          end: const FractionalOffset(1, 1),
+          stops: [0, 1],
+          tileMode: TileMode.clamp,
+        )),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

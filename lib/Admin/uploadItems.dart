@@ -40,7 +40,7 @@ class _UploadPageState extends State<UploadPage>
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            colors: [Colors.pink, Colors.lightGreenAccent],
+            colors: [Colors.blue[700], Colors.white],
             begin: const FractionalOffset(0, 0),
             end: const FractionalOffset(1, 1),
             stops: [0, 1],
@@ -62,7 +62,7 @@ class _UploadPageState extends State<UploadPage>
             child: Text(
               "Logout",
               style: TextStyle(
-                  color: Colors.pink,
+                  color: Colors.blue[700],
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
             ),
@@ -81,7 +81,7 @@ class _UploadPageState extends State<UploadPage>
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-        colors: [Colors.pink, Colors.lightGreenAccent],
+        colors: [Colors.blue[700], Colors.white],
         begin: const FractionalOffset(0, 0),
         end: const FractionalOffset(1, 1),
         stops: [0, 1],
@@ -105,7 +105,7 @@ class _UploadPageState extends State<UploadPage>
                   "Add New Item",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
-                color: Colors.green,
+                color: Colors.blue[700],
                 onPressed: () => takeImage(context),
               ),
             ),
@@ -124,21 +124,21 @@ class _UploadPageState extends State<UploadPage>
             title: Text(
               "Item Image",
               style:
-                  TextStyle(color: Colors.pink, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
             children: [
               SimpleDialogOption(
                 child: Text("Capture with Camera",
-                    style: TextStyle(color: Colors.green)),
+                    style: TextStyle(color: Colors.blue[700])),
                 onPressed: capturePhotoWithCamera,
               ),
               SimpleDialogOption(
                 child: Text("Select from Gallery",
-                    style: TextStyle(color: Colors.green)),
+                    style: TextStyle(color: Colors.blue[700])),
                 onPressed: pickPhotoFromGallery,
               ),
               SimpleDialogOption(
-                child: Text("Cancel", style: TextStyle(color: Colors.green)),
+                child: Text("Cancel", style: TextStyle(color: Colors.blue[700])),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -172,7 +172,7 @@ class _UploadPageState extends State<UploadPage>
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            colors: [Colors.pink, Colors.lightGreenAccent],
+            colors: [Colors.blue[700], Colors.white],
             begin: const FractionalOffset(0, 0),
             end: const FractionalOffset(1, 1),
             stops: [0, 1],
@@ -197,7 +197,7 @@ class _UploadPageState extends State<UploadPage>
             child: Text(
               "Add",
               style: TextStyle(
-                  color: Colors.pink,
+                  color: Colors.blue[700],
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
             ),
@@ -236,14 +236,14 @@ class _UploadPageState extends State<UploadPage>
               controller: _shortInfoTextEditingController,
               decoration: InputDecoration(
                 hintText: "Short Info",
-                icon: Icon(Icons.info_outline, color: Colors.pink,),
-                hintStyle: TextStyle(color: Colors.pink),
+                icon: Icon(Icons.info_outline, color: Colors.blue[700],),
+                hintStyle: TextStyle(color: Colors.blue[700]),
                 border: InputBorder.none,
               ),
             ),
           ),
           Divider(
-            color: Colors.pink,
+            color: Colors.blue[700],
           ),
 
 
@@ -253,14 +253,14 @@ class _UploadPageState extends State<UploadPage>
               controller: _titleTextEditingController,
               decoration: InputDecoration(
                 hintText: "Title",
-                hintStyle: TextStyle(color: Colors.pink),
-                icon: Icon(Icons.text_fields, color: Colors.pink,),
+                hintStyle: TextStyle(color: Colors.blue[700]),
+                icon: Icon(Icons.text_fields, color: Colors.blue[700],),
                 border: InputBorder.none,
               ),
             ),
           ),
           Divider(
-            color: Colors.pink,
+            color: Colors.blue[700],
           ),
           ListTile(
             title: TextField(
@@ -268,14 +268,14 @@ class _UploadPageState extends State<UploadPage>
               controller: _descriptionTextEditingController,
               decoration: InputDecoration(
                 hintText: "Description",
-                icon: Icon(Icons.description, color: Colors.pink,),
-                hintStyle: TextStyle(color: Colors.pink),
+                icon: Icon(Icons.description, color: Colors.blue[700],),
+                hintStyle: TextStyle(color: Colors.blue[700]),
                 border: InputBorder.none,
               ),
             ),
           ),
           Divider(
-            color: Colors.pink,
+            color: Colors.blue[700],
           ),
           ListTile(
             title: TextField(
@@ -284,14 +284,14 @@ class _UploadPageState extends State<UploadPage>
               controller: _priceTextEditingController,
               decoration: InputDecoration(
                 hintText: "Price",
-                icon: Icon(Icons.monetization_on, color: Colors.pink,),
-                hintStyle: TextStyle(color: Colors.pink),
+                icon: Icon(Icons.monetization_on, color: Colors.blue[700],),
+                hintStyle: TextStyle(color: Colors.blue[700]),
                 border: InputBorder.none,
               ),
             ),
           ),
           Divider(
-            color: Colors.pink,
+            color: Colors.blue[700],
           ),
         ],
       ),

@@ -19,7 +19,7 @@ class MyDrawer extends StatelessWidget {
             padding: EdgeInsets.only(top: 25, bottom: 10),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-              colors: [Colors.pink, Colors.lightGreenAccent],
+              colors: [Colors.blue[700], Colors.white],
               begin: const FractionalOffset(0, 0),
               end: const FractionalOffset(1, 1),
               stops: [0, 1],
@@ -53,7 +53,7 @@ class MyDrawer extends StatelessWidget {
             padding: EdgeInsets.only(top: 1),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.pink, Colors.lightGreenAccent],
+                  colors: [Colors.blue[700], Colors.white],
                   begin: const FractionalOffset(0, 0),
                   end: const FractionalOffset(1, 1),
                   stops: [0, 1],

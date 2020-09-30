@@ -91,7 +91,7 @@ class _RegisterState extends State<Register> {
             ),
             RaisedButton(
               onPressed: () => _uploadAndSaveImage(),
-              color: Colors.pink,
+              color: Colors.blue[700],
               child: Text(
                 "Sign up",
                 style: TextStyle(color: Colors.white),
@@ -99,11 +99,6 @@ class _RegisterState extends State<Register> {
             ),
             SizedBox(
               height: 30,
-            ),
-            Container(
-              height: 4,
-              width: _screenWidth * 0.8,
-              color: Colors.pink,
             ),
             SizedBox(
               height: 30,

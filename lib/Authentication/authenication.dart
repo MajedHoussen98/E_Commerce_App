@@ -15,10 +15,11 @@ class _AuthenticScreenState extends State<AuthenticScreen> {
       length:2,
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-              colors: [Colors.pink, Colors.lightGreenAccent],
+              colors: [Colors.blue[700], Colors.white],
               begin: const FractionalOffset(0, 0),
               end: const FractionalOffset(1, 1),
               stops: [0, 1],
@@ -54,7 +55,7 @@ class _AuthenticScreenState extends State<AuthenticScreen> {
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.pink, Colors.lightGreenAccent],
+                colors: [Colors.blue[700], Colors.white],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
               )
