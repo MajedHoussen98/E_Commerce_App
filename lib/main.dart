@@ -2,7 +2,9 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_shop/Counters/ItemQuantity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Authentication/authenication.dart';
@@ -77,6 +79,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(
           colors: [Colors.blue[700], Colors.white],
@@ -85,28 +88,25 @@ class _SplashScreenState extends State<SplashScreen> {
           stops: [0, 1],
           tileMode: TileMode.clamp,
         )),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/images/welcome.png",
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 30),
-                child: Text(
-                  "World's Largest & Number one online shop",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-              )
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              height: 100,
+            ),
+            Text(
+              "Welcome to shop",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 80,
+                  letterSpacing: 2,
+                  fontFamily: "Signatra"),
+            ),
+            Image.asset(
+              "assets/images/welcome.png",
+              height: 200,
+            ),
+          ],
         ),
       ),
     );

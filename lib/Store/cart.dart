@@ -67,10 +67,10 @@ class _CartPageState extends State<CartPage> {
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: Colors.blue[50],
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            border: Border.all(color: Colors.blue)
-                          ),
+                              color: Colors.blue[50],
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              border: Border.all(color: Colors.blue)),
                           child: Center(
                             child: Text(
                               "Total Price: ₪${amountProvider.totalAmount.toString()}",
@@ -139,18 +139,30 @@ class _CartPageState extends State<CartPage> {
   beginBuildingCart() {
     return SliverToBoxAdapter(
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        margin: EdgeInsets.only(left: 20, right: 20, top: 40),
         color: Theme.of(context).primaryColor.withOpacity(0.5),
         child: Container(
-          height: 100,
+          height: 120,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 Icons.insert_emoticon,
                 color: Colors.white,
+                size: 40,
               ),
-              Text("Cart is  empty. "),
-              Text("Start adding items to your Cart. "),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Cart is  empty. ",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "Start adding items to your Cart. ",
+                style: TextStyle(fontSize: 18),
+              ),
             ],
           ),
         ),

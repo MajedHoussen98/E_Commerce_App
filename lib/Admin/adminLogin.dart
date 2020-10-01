@@ -48,7 +48,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
     double _screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Container(
-        height: MediaQuery.of(context).size.height,
+       // height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(
           colors: [Colors.blue[700], Colors.white],
@@ -59,12 +59,13 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
         )),
         child: Column(
           children: [
+            SizedBox(
+              height: 15,
+            ),
             Container(
               alignment: Alignment.bottomCenter,
               child: Image.asset(
                 "assets/images/admin.png",
-                height: 240,
-                width: 240,
               ),
             ),
             Padding(
@@ -150,9 +151,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen> {
                   style: TextStyle(
                       color: Colors.blue[700], fontWeight: FontWeight.bold)),
             ),
-            SizedBox(
-              height: 50,
-            ),
+            SizedBox(height: 50,)
           ],
         ),
       ),
