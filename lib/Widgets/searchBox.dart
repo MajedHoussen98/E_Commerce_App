@@ -4,16 +4,12 @@ import 'package:flutter/material.dart';
 
 import '../Store/Search.dart';
 
-
 class SearchBoxDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
-      BuildContext context,
-      double shrinkOffset,
-      bool overlapsContent
-      ) =>
+          BuildContext context, double shrinkOffset, bool overlapsContent) =>
       InkWell(
-        onTap: (){
+        onTap: () {
           Route route = MaterialPageRoute(builder: (c) => SearchProduct());
           Navigator.pushReplacement(context, route);
         },
@@ -25,7 +21,11 @@ class SearchBoxDelegate extends SliverPersistentHeaderDelegate {
                 end: const FractionalOffset(1, 1),
                 stops: [0, 1],
                 tileMode: TileMode.clamp,
-              )),
+              ),
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(20)),
+              boxShadow: [BoxShadow(blurRadius: 5)]),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width,
           height: 80,
@@ -36,7 +36,7 @@ class SearchBoxDelegate extends SliverPersistentHeaderDelegate {
               height: 50,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
                 children: [
@@ -47,7 +47,6 @@ class SearchBoxDelegate extends SliverPersistentHeaderDelegate {
                       color: Colors.blueGrey,
                     ),
                   ),
-
                   Padding(
                     padding: EdgeInsets.only(left: 8),
                     child: Text("Search here"),
@@ -59,8 +58,6 @@ class SearchBoxDelegate extends SliverPersistentHeaderDelegate {
         ),
       );
 
-
-
   @override
   double get maxExtent => 80;
 
@@ -70,5 +67,3 @@ class SearchBoxDelegate extends SliverPersistentHeaderDelegate {
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
 }
-
-
