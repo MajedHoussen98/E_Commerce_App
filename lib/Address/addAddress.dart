@@ -1,9 +1,12 @@
 import 'package:e_shop/Config/config.dart';
+import 'package:e_shop/Store/storehome.dart';
 import 'package:e_shop/Widgets/customAppBar.dart';
 import 'package:e_shop/Models/address.dart';
 import 'package:e_shop/Widgets/myDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'address.dart';
 
 class AddAddress extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -49,6 +52,8 @@ class AddAddress extends StatelessWidget {
                 FocusScope.of(context).requestFocus(FocusNode());
                 formKey.currentState.reset();
               });
+              Route route = MaterialPageRoute(builder: (c) => StoreHome());
+              Navigator.pushReplacement(context, route);
             }
           },
           label: Text("Done"),
@@ -61,23 +66,13 @@ class AddAddress extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Center(
-                    child: ShaderMask(
-                      shaderCallback: (b) => RadialGradient(
-                        center: Alignment.topLeft,
-                        radius: 1,
-                        colors: [Colors.blue[700], Colors.blue[200]],
-                        tileMode: TileMode.mirror,
-                      ).createShader(b),
-                      child: const Text(
-                        "Add New Address",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                  padding: const EdgeInsets.all(15),
+                  child: const Text(
+                    "Add New Address",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

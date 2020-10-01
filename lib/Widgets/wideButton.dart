@@ -16,6 +16,7 @@ class WideButton extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: Colors.blue[700],
+              borderRadius: BorderRadius.circular(20),
             ),
             width: MediaQuery.of(context).size.width * 0.85,
             height: 50,

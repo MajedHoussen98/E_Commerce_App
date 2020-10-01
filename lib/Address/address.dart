@@ -29,6 +29,62 @@ class _AddressState extends State<Address> {
       child: Scaffold(
         appBar: MyAppBar(),
         drawer: MyDrawer(),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.all(15),
+                child: Text(
+                  "Select Address",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+              ),
+            ),
+            Consumer<AddressChanger>(
+              builder: (context, address, c) {
+                return Flexible(
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: EcommerceApp.fireStore
+                        .collection(EcommerceApp.collectionUser)
+                        .document(EcommerceApp.sharedPreferences
+                            .getString(EcommerceApp.userUID))
+                        .collection(EcommerceApp.subCollectionAddress)
+                        .snapshots(),
+                    builder: (context, snapshpt) {
+                      return !snapshpt.hasData
+                          ? Center(
+                              child: circularProgress(),
+                            )
+                          : snapshpt.data.documents.length == 0
+                              ? noAddressCard()
+                              : ListView.builder(
+                                  itemCount: snapshpt.data.documents.length,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    return AddressCard(
+                                      currentIndex: address.count,
+                                      value: index,
+                                      addressId: snapshpt
+                                          .data.documents[index].documentID,
+                                      totalAmount: widget.totalAmount,
+                                      model: AddressModel.fromJson(
+                                          snapshpt.data.documents[index].data),
+                                    );
+                                  },
+                                );
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
         floatingActionButton: FloatingActionButton.extended(
           label: Text("Add New Address"),
           backgroundColor: Colors.blue[700],
@@ -43,7 +99,26 @@ class _AddressState extends State<Address> {
   }
 
   noAddressCard() {
-    return Card();
+    return Card(
+      color: Colors.blue[600].withOpacity(0.4),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Container(
+        height: 100,
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.add_location,
+              color: Colors.white,
+            ),
+            Text("No shipment address has been saved."),
+            Text(
+                "Please add your shipment Address so that we can deliver product.")
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -72,8 +147,13 @@ class _AddressCardState extends State<AddressCard> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return InkWell(
+      onTap: () {
+        Provider.of<AddressChanger>(context, listen: false)
+            .displayResult(widget.value);
+      },
       child: Card(
-        color: Colors.blue[700].withOpacity(0.4),
+        color: Colors.blue[600].withOpacity(0.4),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Column(
           children: [
             Row(
