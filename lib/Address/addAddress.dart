@@ -23,7 +23,30 @@ class AddAddress extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        appBar: MyAppBar(),
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              colors: [Colors.blue[700], Colors.white],
+              begin: const FractionalOffset(0, 0),
+              end: const FractionalOffset(1, 1),
+              stops: [0, 1],
+              tileMode: TileMode.clamp,
+            )),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Add Address",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          leading: BackButton(
+            color: Colors.white,
+            onPressed: () {
+              Route route = MaterialPageRoute(builder: (c) => StoreHome());
+              Navigator.pushReplacement(context, route);
+            },
+          ),
+        ),
         drawer: MyDrawer(),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
@@ -52,62 +75,52 @@ class AddAddress extends StatelessWidget {
                 FocusScope.of(context).requestFocus(FocusNode());
                 formKey.currentState.reset();
               });
-              Route route = MaterialPageRoute(builder: (c) => StoreHome());
-              Navigator.pushReplacement(context, route);
             }
+            Route route = MaterialPageRoute(builder: (c) => Address());
+            Navigator.pushReplacement(context, route);
           },
           label: Text("Done"),
           backgroundColor: Colors.blue[700],
           icon: Icon(Icons.check),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: const Text(
-                    "Add New Address",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+          child: Container(
+            margin: EdgeInsets.only(top: 20),
+            child: Column(
+              children: [
+                Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      MyTextField(
+                        hint: "Name",
+                        controller: cName,
+                      ),
+                      MyTextField(
+                        hint: "Phone number",
+                        controller: cPhoneNumber,
+                      ),
+                      MyTextField(
+                        hint: "Flat Number / House Number",
+                        controller: cFlatHomeNumber,
+                      ),
+                      MyTextField(
+                        hint: "City",
+                        controller: cCity,
+                      ),
+                      MyTextField(
+                        hint: "State / Country",
+                        controller: cState,
+                      ),
+                      MyTextField(
+                        hint: "Pin code",
+                        controller: cPinCode,
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    MyTextField(
-                      hint: "Name",
-                      controller: cName,
-                    ),
-                    MyTextField(
-                      hint: "Phone number",
-                      controller: cPhoneNumber,
-                    ),
-                    MyTextField(
-                      hint: "Flat Number / House Number",
-                      controller: cFlatHomeNumber,
-                    ),
-                    MyTextField(
-                      hint: "City",
-                      controller: cCity,
-                    ),
-                    MyTextField(
-                      hint: "State / Country",
-                      controller: cState,
-                    ),
-                    MyTextField(
-                      hint: "Pin code",
-                      controller: cPinCode,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_shop/Config/config.dart';
 import 'package:e_shop/Models/address.dart';
 import 'package:e_shop/Orders/placeOrderPaymentPage.dart';
+import 'package:e_shop/Store/cart.dart';
 import 'package:e_shop/Widgets/customAppBar.dart';
 import 'package:e_shop/Widgets/loadingWidget.dart';
 import 'package:e_shop/Widgets/myDrawer.dart';
@@ -27,63 +28,75 @@ class _AddressState extends State<Address> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MyAppBar(),
-        drawer: MyDrawer(),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Text(
-                  "Select Address",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.blue[700], Colors.white],
+                  begin: const FractionalOffset(0, 0),
+                  end: const FractionalOffset(1, 1),
+                  stops: [0, 1],
+                  tileMode: TileMode.clamp,
+                )),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Select Address",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          leading: BackButton(
+            color: Colors.white,
+            onPressed: () {
+              Route route = MaterialPageRoute(builder: (c) => CartPage());
+              Navigator.pushReplacement(context, route);
+            },
+          ),
+        ),
+        body: Container(
+          margin: EdgeInsets.only(top: 20, right: 4, left: 4),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Consumer<AddressChanger>(
+                builder: (context, address, c) {
+                  return Flexible(
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream: EcommerceApp.fireStore
+                          .collection(EcommerceApp.collectionUser)
+                          .document(EcommerceApp.sharedPreferences
+                              .getString(EcommerceApp.userUID))
+                          .collection(EcommerceApp.subCollectionAddress)
+                          .snapshots(),
+                      builder: (context, snapshpt) {
+                        return !snapshpt.hasData
+                            ? Center(
+                                child: circularProgress(),
+                              )
+                            : snapshpt.data.documents.length == 0
+                                ? noAddressCard()
+                                : ListView.builder(
+                                    itemCount: snapshpt.data.documents.length,
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return AddressCard(
+                                        currentIndex: address.count,
+                                        value: index,
+                                        addressId: snapshpt
+                                            .data.documents[index].documentID,
+                                        totalAmount: widget.totalAmount,
+                                        model: AddressModel.fromJson(
+                                            snapshpt.data.documents[index].data),
+                                      );
+                                    },
+                                  );
+                      },
+                    ),
+                  );
+                },
               ),
-            ),
-            Consumer<AddressChanger>(
-              builder: (context, address, c) {
-                return Flexible(
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: EcommerceApp.fireStore
-                        .collection(EcommerceApp.collectionUser)
-                        .document(EcommerceApp.sharedPreferences
-                            .getString(EcommerceApp.userUID))
-                        .collection(EcommerceApp.subCollectionAddress)
-                        .snapshots(),
-                    builder: (context, snapshpt) {
-                      return !snapshpt.hasData
-                          ? Center(
-                              child: circularProgress(),
-                            )
-                          : snapshpt.data.documents.length == 0
-                              ? noAddressCard()
-                              : ListView.builder(
-                                  itemCount: snapshpt.data.documents.length,
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) {
-                                    return AddressCard(
-                                      currentIndex: address.count,
-                                      value: index,
-                                      addressId: snapshpt
-                                          .data.documents[index].documentID,
-                                      totalAmount: widget.totalAmount,
-                                      model: AddressModel.fromJson(
-                                          snapshpt.data.documents[index].data),
-                                    );
-                                  },
-                                );
-                    },
-                  ),
-                );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton.extended(
           label: Text("Add New Address"),

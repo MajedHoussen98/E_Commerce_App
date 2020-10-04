@@ -1,13 +1,15 @@
 import 'package:e_shop/Config/config.dart';
 import 'package:e_shop/Store/cart.dart';
 import 'package:e_shop/Counters/cartitemcounter.dart';
+import 'package:e_shop/Store/storehome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MyAppBar extends StatelessWidget with PreferredSizeWidget {
   final PreferredSizeWidget bottom;
+  final String titleText;
 
-  MyAppBar({this.bottom});
+  MyAppBar({this.bottom, this.titleText});
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +26,15 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
         )),
       ),
       centerTitle: true,
-      title: Text(
-        "e_Shop",
-        style: TextStyle(
-            fontSize: 55, color: Colors.white, fontFamily: "Signatra"),
-      ),
+      title: Text(titleText, style: TextStyle(fontWeight: FontWeight.bold),),
       bottom: bottom,
+      leading: BackButton(
+        color: Colors.white,
+        onPressed: () {
+          Route route = MaterialPageRoute(builder: (c) => StoreHome());
+          Navigator.pushReplacement(context, route);
+        },
+      ),
       actions: [
         Stack(
           children: [

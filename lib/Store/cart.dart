@@ -50,8 +50,7 @@ class _CartPageState extends State<CartPage> {
         label: Text("Check Out"),
         backgroundColor: Colors.blue[700],
       ),
-      appBar: MyAppBar(),
-      drawer: MyDrawer(),
+      appBar: MyAppBar(titleText: "My Cart",),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(

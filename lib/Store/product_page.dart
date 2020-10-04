@@ -23,8 +23,30 @@ class _ProductPageState extends State<ProductPage> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: MyAppBar(),
-        drawer: MyDrawer(),
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              colors: [Colors.blue[700], Colors.white],
+              begin: const FractionalOffset(0, 0),
+              end: const FractionalOffset(1, 1),
+              stops: [0, 1],
+              tileMode: TileMode.clamp,
+            )),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Product Details",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          leading: BackButton(
+            color: Colors.white,
+            onPressed: () {
+              Route route = MaterialPageRoute(builder: (c) => StoreHome());
+              Navigator.pushReplacement(context, route);
+            },
+          ),
+        ),
         body: ListView(
           children: [
             Container(
@@ -37,7 +59,7 @@ class _ProductPageState extends State<ProductPage> {
                   Stack(
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height *0.3,
+                        height: MediaQuery.of(context).size.height * 0.3,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -83,23 +105,28 @@ class _ProductPageState extends State<ProductPage> {
                     padding: EdgeInsets.only(top: 8),
                     child: Center(
                       child: InkWell(
-                        onTap: () => checkItemInCart(widget.itemModel.shortInfo, context),
+                        onTap: () => checkItemInCart(
+                            widget.itemModel.shortInfo, context),
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               gradient: LinearGradient(
-                            colors: [Colors.blue[700], Colors.white],
-                            begin: const FractionalOffset(0, 0),
-                            end: const FractionalOffset(1, 1),
-                            stops: [0, 1],
-                            tileMode: TileMode.clamp,
-                          )),
+                                colors: [Colors.blue[700], Colors.white],
+                                begin: const FractionalOffset(0, 0),
+                                end: const FractionalOffset(1, 1),
+                                stops: [0, 1],
+                                tileMode: TileMode.clamp,
+                              )),
                           width: screenSize.width - 40,
                           height: 50,
                           child: Center(
                             child: Text(
                               "Add to Cart",
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18, letterSpacing: 1),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  letterSpacing: 1),
                             ),
                           ),
                         ),
