@@ -115,14 +115,6 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
-            // RaisedButton(
-            //   onPressed: () => _uploadAndSaveImage(),
-            //   color: Colors.blue[700],
-            //   child: Text(
-            //     "Sign up",
-            //     style: TextStyle(color: Colors.white),
-            //   ),
-            // ),
             SizedBox(
               height: 30,
             ),
