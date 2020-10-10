@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _displaySplash();
+   _displaySplash();
   }
 
   void _displaySplash() {
@@ -89,11 +89,8 @@ class _SplashScreenState extends State<SplashScreen> {
           tileMode: TileMode.clamp,
         )),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 100,
-            ),
             Text(
               "Welcome to shop",
               style: TextStyle(
@@ -101,10 +98,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   fontSize: 80,
                   letterSpacing: 2,
                   fontFamily: "Signatra"),
-            ),
-            Image.asset(
-              "assets/images/welcome.png",
-              height: 200,
             ),
           ],
         ),
